@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathletes Academy - Where Mathematical Thinking Begins</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for aesthetic vectors -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Configure Tailwind for custom colors and font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'math-red': '#E53E3E', // Primary Red
+                        'math-light': '#FFF5F5', // Light background red
+                        'math-gray': '#4A5568', // Dark text
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'math-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23E53E3E\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34L30 34 30 30 36 30z M36 36L30 36 30 40 36 40z M24 24L30 24 30 30 24 30z M24 30L30 30 30 36 24 36z M24 36L30 36 30 42 24 42z M18 30L24 30 24 36 18 36z M18 36L24 36 24 42 18 42z M12 36L18 36 18 42 12 42z M12 42L18 42 18 48 12 48z M6 42L12 42 12 48 6 48z M6 48L12 48 12 54 6 54z M0 48L6 48 6 54 0 54z M0 54L6 54 6 60 0 60z M54 0L60 0 60 6 54 6z M54 6L60 6 60 12 54 12z M54 12L60 12 60 18 54 18z M54 18L60 18 60 24 54 24z M54 24L60 24 60 30 54 30z M54 30L60 30 60 36 54 36z M48 0L54 0 54 6 48 6z M48 6L54 6 54 12 48 12z M48 12L54 12 54 18 48 18z M48 18L54 18 54 24 48 24z M48 24L54 24 54 30 48 30z M48 30L54 30 54 36 48 36z M48 36L54 36 54 42 48 42z M42 0L48 0 48 6 42 6z M42 6L48 6 48 12 42 12z M42 12L48 12 48 18 42 18z M42 18L48 18 48 24 42 24z M42 24L48 24 48 30 42 30z M42 30L48 30 48 36 42 36z M42 36L48 36 48 42 42 42z M42 42L48 42 48 48 42 48z M36 0L42 0 42 6 36 6z M36 6L42 6 42 12 36 12z M36 12L42 12 42 18 36 18z M36 18L42 18 42 24 36 24z M36 24L42 24 42 30 36 30z M36 30L42 30 42 36 36 36z M36 42L42 42 42 48 36 48z M36 48L42 48 42 54 36 54z M30 0L36 0 36 6 30 6z M30 6L36 6 36 12 30 12z M30 12L36 12 36 18 30 18z M30 18L36 18 36 24 30 24z M30 36L36 36 36 42 30 42z M30 42L36 42 36 48 30 48z M30 48L36 48 36 54 30 54z M30 54L36 54 36 60 30 60z M24 0L30 0 30 6 24 6z M24 6L30 6 30 12 24 12z M24 12L30 12 30 18 24 18z M24 18L30 18 30 24 24 24z M24 42L30 42 30 48 24 48z M24 48L30 48 30 54 24 54z M24 54L30 54 30 60 24 60z M18 0L24 0 24 6 18 6z M18 6L24 6 24 12 18 12z M18 12L24 12 24 18 18 18z M18 18L24 18 24 24 18 24z M18 24L24 24 24 30 18 30z M18 42L24 42 24 48 18 48z M18 48L24 48 24 54 18 54z M18 54L24 54 24 60 18 60z M12 0L18 0 18 6 12 6z M12 6L18 6 18 12 12 12z M12 12L18 12 18 18 12 18z M12 18L18 18 18 24 12 24z M12 24L18 24 18 30 12 30z M12 30L18 30 18 36 12 36z M12 48L18 48 18 54 12 54z M12 54L18 54 18 60 12 60z M6 0L12 0 12 6 6 6z M6 6L12 6 12 12 6 12z M6 12L12 12 12 18 6 18z M6 18L12 18 12 24 6 24z M6 24L12 24 12 30 6 30z M6 30L12 30 12 36 6 36z M6 36L12 36 12 42 6 42z M6 54L12 54 12 60 6 60z M0 0L6 0 6 6 0 6z M0 6L6 6 6 12 0 12z M0 12L6 12 6 18 0 18z M0 18L6 18 6 24 0 24z M0 24L6 24 6 30 0 30z M0 30L6 30 6 36 0 36z M0 36L6 36 6 42 0 42z M0 42L6 42 6 48 0 48z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth scroll for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Subtle background pattern */
+        body {
+            background-color: #ffffff;
+            background-image: var(--tw-bg-math-pattern);
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #E53E3E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        /* Hover animation for buttons/links */
+        .animated-btn {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .animated-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(229, 62, 62, 0.5), 0 4px 6px -2px rgba(229, 62, 62, 0.2);
+        }
+
+        /* Subtle heading animation */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* WhatsApp Button styling from user request */
+        .whatsapp-button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+            overflow: hidden;
+        }
+        .whatsapp-button:hover {
+            background-color: #1ebe57;
+            transform: scale(1.05);
+        }
+        .whatsapp-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            filter: brightness(0) invert(1); /* Ensure the SVG icon is white */
+        }
+
+        /* Carousel Styles */
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        .carousel-dot {
+            transition: background-color 0.3s;
+        }
+        .carousel-dot.active {
+            background-color: #E53E3E;
+        }
+
+    </style>
+</head>
+<body class="font-sans text-math-gray">
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-button-container">
+        <!-- Integrated user-provided HTML, adjusted for Tailwind context -->
+        <a href="https://wa.me/917667662290" target="_blank" class="whatsapp-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo"> Chat with us
+        </a>
+    </div>
+
+    <!-- Header Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <!-- Logo / Academy Name (Left) -->
+            <div class="flex items-center space-x-2">
+                <i data-lucide="calculator" class="w-8 h-8 text-math-red"></i>
+                <a href="#home" class="text-2xl font-extrabold text-math-red tracking-tight">
+                    Mathletes Academy
+                </a>
+            </div>
+
+            <!-- Navigation Links (Center/Right) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Home</a>
+                <a href="#about" class="text-math-gray hover:text-math-red transition duration-150 font-medium">About Us</a>
+                <a href="#courses" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Courses</a>
+                <a href="#results" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Results</a>
+                <a href="#resources" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Resources</a>
+                <a href="#admissions" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Admissions</a>
+                <a href="#contact" class="text-math-gray hover:text-math-red transition duration-150 font-medium">Contact</a>
+            </div>
+
+            <!-- Student Portal / Logo (Top-Right) -->
+            <div class="flex items-center space-x-4">
+                <button onclick="showStudentPortal()" id="portal-btn" class="hidden md:block bg-math-red text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 animated-btn">
+                    Student Portal
+                </button>
+                <i data-lucide="book-open-text" class="w-8 h-8 text-math-red"></i>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i data-lucide="menu" class="w-6 h-6 text-math-red"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner pb-4 px-4">
+            <a href="#home" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">Home</a>
+            <a href="#about" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">About Us</a>
+            <a href="#courses" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">Courses</a>
+            <a href="#results" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">Results</a>
+            <a href="#resources" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">Resources</a>
+            <a href="#admissions" class="block py-2 text-math-gray hover:text-math-red border-b border-gray-100" onclick="toggleMenu()">Admissions</a>
+            <a href="#contact" class="block py-2 text-math-gray hover:text-math-red" onclick="toggleMenu()">Contact</a>
+            <button onclick="showStudentPortal()" class="w-full mt-4 bg-math-red text-white py-2 rounded-lg font-semibold hover:bg-red-700">
+                Student Portal
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Modal for Student Portal (Hidden by default) -->
+        <div id="student-portal-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-900 bg-opacity-75 p-4">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 md:p-8 transform transition-all">
+                <div class="flex justify-between items-center border-b pb-3 mb-4">
+                    <h2 class="text-2xl font-bold text-math-red">Student Portal</h2>
+                    <button onclick="hideStudentPortal()" class="text-gray-400 hover:text-math-red">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <div id="portal-login-view">
+                    <p class="mb-4 text-sm text-math-gray">Sign in to view your test results. Your email address is your unique identifier.</p>
+                    <div class="space-y-4">
+                        <input type="email" id="student-email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red">
+                        <input type="text" id="student-name" placeholder="Your Name (for first-time sign up)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red">
+                        <button onclick="handleStudentLogin()" class="w-full bg-math-red text-white p-3 rounded-lg font-semibold hover:bg-red-700 animated-btn">
+                            Sign In / Look Up Results
+                        </button>
+                    </div>
+                    <p id="portal-message" class="mt-4 text-center text-sm text-red-500"></p>
+                </div>
+
+                <div id="portal-results-view" class="hidden">
+                    <p class="text-lg font-semibold mb-4 border-b pb-2">Welcome, <span id="student-name-display" class="text-math-red"></span>!</p>
+                    <h4 class="text-xl font-bold mb-3">Your Results</h4>
+                    <div id="results-list" class="space-y-3 max-h-80 overflow-y-auto pr-2">
+                        <!-- Results will be injected here -->
+                    </div>
+                    <button onclick="handleLogout()" class="w-full mt-6 bg-gray-500 text-white p-3 rounded-lg font-semibold hover:bg-gray-600 animated-btn">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. Home Section -->
+        <section id="home" class="min-h-[70vh] flex items-center bg-math-light py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-math-red mb-4 animate-fade-in">
+                    Mathletes Academy
+                </h1>
+                <p class="text-xl md:text-3xl text-math-gray font-light mb-8 animate-fade-in delay-100">
+                    “Where Mathematical Thinking Begins.”
+                </p>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-10 animate-fade-in delay-200">
+                    Empowering CBSE students from Grade 7 to 12 with conceptual clarity, rigorous practice, and the confidence to excel in the most challenging mathematical exams.
+                </p>
+                <a href="#admissions" class="inline-flex items-center bg-math-red text-white text-lg font-bold px-8 py-4 rounded-full animated-btn animate-fade-in delay-300">
+                    Enroll Now
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">About Us</h2>
+
+                <div class="grid md:grid-cols-3 gap-10 text-center">
+                    <!-- Mission -->
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="target" class="w-10 h-10 text-math-red mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-math-red">Our Mission</h3>
+                        <p class="text-gray-600">To cultivate a deep, intuitive understanding of mathematical concepts rather than rote memorization, ensuring our students become true problem-solvers.</p>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="eye" class="w-10 h-10 text-math-red mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-math-red">Our Vision</h3>
+                        <p class="text-gray-600">To be the premier mathematics coaching institute in Chennai, known for producing top academic performers and fostering intellectual curiosity.</p>
+                    </div>
+
+                    <!-- Approach -->
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="lightbulb" class="w-10 h-10 text-math-red mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-math-red">Teaching Approach</h3>
+                        <p class="text-gray-600">A hybrid model combining detailed lectures, personalized doubt-clearing sessions, and frequent, topic-wise assessments aligned strictly with the CBSE pattern.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Courses Section -->
+        <section id="courses" class="py-20 bg-math-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">Our Courses</h2>
+
+                <div class="relative">
+                    <div id="course-carousel" class="overflow-hidden rounded-xl shadow-2xl">
+                        <!-- Course Items will be dynamically generated/controlled by JS -->
+                        <div class="carousel-item p-8 bg-white" data-carousel-index="0">
+                            <h3 class="text-3xl font-bold text-math-red mb-3">CBSE Class 8 - Foundations</h3>
+                            <p class="text-lg text-gray-700 mb-4">Building strong arithmetic, algebra, and geometry basics.</p>
+                            <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                                <li>**Highlights:** Rational Numbers, Linear Equations, Understanding Quadrilaterals, Mensuration.</li>
+                                <li>**Objective:** Ensure complete conceptual clarity for future high school mathematics.</li>
+                            </ul>
+                        </div>
+                        <div class="carousel-item p-8 bg-white" data-carousel-index="1">
+                            <h3 class="text-3xl font-bold text-math-red mb-3">CBSE Class 10 - Board Excellence</h3>
+                            <p class="text-lg text-gray-700 mb-4">Intensive preparation focused on Board Exam success.</p>
+                            <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                                <li>**Highlights:** Real Numbers, Polynomials, Quadratic Equations, Trigonometry, Surface Areas and Volumes.</li>
+                                <li>**Objective:** Master high-scoring topics and refine time management for the final exam.</li>
+                            </ul>
+                        </div>
+                        <div class="carousel-item p-8 bg-white" data-carousel-index="2">
+                            <h3 class="text-3xl font-bold text-math-red mb-3">CBSE Class 12 - Advanced Calculus & Vectors</h3>
+                            <p class="text-lg text-gray-700 mb-4">Covering both Core and Applied Mathematics streams.</p>
+                            <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                                <li>**Highlights:** Relations & Functions, Calculus (Integration, Differentiation), Vectors & 3D Geometry, Linear Programming.</li>
+                                <li>**Objective:** Achieve distinction marks and secure foundation for university-level studies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Carousel Navigation -->
+                    <div class="flex justify-center mt-6 space-x-3" id="course-dots">
+                        <button class="carousel-dot w-3 h-3 bg-gray-300 rounded-full" onclick="changeSlide('course', 0)"></button>
+                        <button class="carousel-dot w-3 h-3 bg-gray-300 rounded-full" onclick="changeSlide('course', 1)"></button>
+                        <button class="carousel-dot w-3 h-3 bg-gray-300 rounded-full" onclick="changeSlide('course', 2)"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Results Section -->
+        <section id="results" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">Our Top Performers</h2>
+
+                <div class="relative">
+                    <div id="results-carousel" class="overflow-hidden rounded-xl shadow-2xl">
+                        <!-- Results Items (Mock Data) -->
+                        <div class="carousel-item p-8 bg-math-light border-l-4 border-math-red text-center md:text-left md:flex items-center space-x-6" data-carousel-index="0">
+                            <img src="https://placehold.co/120x120/E53E3E/FFFFFF?text=99" alt="Student 1" class="rounded-full mx-auto md:mx-0 mb-4 md:mb-0 border-4 border-white shadow-md">
+                            <div>
+                                <h3 class="text-3xl font-bold text-math-red">Ananya S. - Class 12</h3>
+                                <p class="text-xl text-gray-700 font-medium mb-2">99/100 in Mathematics (CBSE Board)</p>
+                                <p class="text-gray-600 italic">"The clarity in Calculus taught here was unmatched. Thank you, Mathletes!"</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item p-8 bg-math-light border-l-4 border-math-red text-center md:text-left md:flex items-center space-x-6" data-carousel-index="1">
+                            <img src="https://placehold.co/120x120/E53E3E/FFFFFF?text=95" alt="Student 2" class="rounded-full mx-auto md:mx-0 mb-4 md:mb-0 border-4 border-white shadow-md">
+                            <div>
+                                <h3 class="text-3xl font-bold text-math-red">Rohan K. - Class 10</h3>
+                                <p class="text-xl text-gray-700 font-medium mb-2">95/100 in Mathematics (CBSE Board)</p>
+                                <p class="text-gray-600 italic">"Gained immense confidence in Trigonometry and Geometry through structured test series."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Navigation -->
+                    <div class="flex justify-center mt-6 space-x-3" id="results-dots">
+                        <button class="carousel-dot w-3 h-3 bg-gray-300 rounded-full" onclick="changeSlide('results', 0)"></button>
+                        <button class="carousel-dot w-3 h-3 bg-gray-300 rounded-full" onclick="changeSlide('results', 1)"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Resources Section -->
+        <section id="resources" class="py-20 bg-math-light">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">Resources for Success</h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Formula Sheets -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-math-red flex flex-col items-center text-center">
+                        <i data-lucide="file-text" class="w-10 h-10 text-math-red mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">1. Formula Sheets</h3>
+                        <p class="text-gray-600 mb-4">Concise, chapter-wise sheets for quick revision of all key theorems and formulas (CBSE 7-12).</p>
+                        <a href="#" class="text-sm text-white bg-math-red px-4 py-2 rounded-full mt-auto animated-btn">Download PDF</a>
+                    </div>
+                    <!-- Practice PDFs -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-math-red flex flex-col items-center text-center">
+                        <i data-lucide="pencil-ruler" class="w-10 h-10 text-math-red mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">2. Practice PDFs</h3>
+                        <p class="text-gray-600 mb-4">Challenging question banks and previous year paper sets for thorough practice.</p>
+                        <a href="#" class="text-sm text-white bg-math-red px-4 py-2 rounded-full mt-auto animated-btn">Access Questions</a>
+                    </div>
+                    <!-- YouTube Lessons -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-math-red flex flex-col items-center text-center">
+                        <i data-lucide="youtube" class="w-10 h-10 text-math-red mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">3. YouTube Lessons</h3>
+                        <p class="text-gray-600 mb-4">Links to curated video lectures on difficult topics and exam strategies.</p>
+                        <a href="https://www.youtube.com/" target="_blank" class="text-sm text-white bg-math-red px-4 py-2 rounded-full mt-auto animated-btn">Watch Videos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Admissions Section (Form) -->
+        <section id="admissions" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">Online Admissions Inquiry</h2>
+
+                <div class="bg-math-light p-8 md:p-10 rounded-xl shadow-2xl">
+                    <form id="admission-form" onsubmit="handleAdmissionSubmit(event)">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+                                <input type="text" id="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red">
+                            </div>
+                            <div>
+                                <label for="class-grade" class="block text-sm font-medium text-gray-700 mb-1">Current Class</label>
+                                <select id="class-grade" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red bg-white">
+                                    <option value="" disabled selected>Select Grade</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message (Optional)</label>
+                            <textarea id="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-math-red focus:border-math-red"></textarea>
+                        </div>
+                        <button type="submit" id="admission-submit-btn" class="w-full bg-math-red text-white text-lg font-bold p-3 rounded-lg animated-btn">
+                            Submit Inquiry
+                        </button>
+                        <p id="form-status" class="mt-4 text-center font-medium"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Contact Section -->
+        <section id="contact" class="py-20 bg-math-light">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-math-gray mb-12 border-b-4 border-math-red inline-block pb-1 animate-fade-in">Get In Touch</h2>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="map-pin" class="w-8 h-8 text-math-red flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-semibold text-math-red">Our Address</h3>
+                                <p class="text-lg text-gray-700">Mathletes Academy,<br>18/9 Kamatchi Street, Lenin Nagar,<br>Oragadam, Ambattur, Chennai- 600053</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="phone" class="w-8 h-8 text-math-red flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-semibold text-math-red">Call Us</h3>
+                                <p class="text-lg text-gray-700">📞 766 766 22 90</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="mail" class="w-8 h-8 text-math-red flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-semibold text-math-red">Email Us</h3>
+                                <p class="text-lg text-gray-700">info@mathletesacademy.com (Mock Email)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mock Map Placeholder -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden h-72">
+                        <img src="https://placehold.co/600x400/E53E3E/FFFFFF?text=Map+Placeholder" alt="Map Location" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-8">
+                <!-- Academy Info -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 text-math-red">Mathletes Academy</h4>
+                    <p class="text-sm text-gray-400">Where Mathematical Thinking Begins. Coaching for CBSE Grades 7-12.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-math-red transition">About Us</a></li>
+                        <li><a href="#courses" class="hover:text-math-red transition">Courses</a></li>
+                        <li><a href="#resources" class="hover:text-math-red transition">Resources</a></li>
+                        <li><a href="#admissions" class="hover:text-math-red transition">Admissions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Contact</h4>
+                    <p class="text-sm text-gray-400">18/9 Kamatchi Street, Lenin Nagar, Oragadam, Ambattur, Chennai- 600053</p>
+                    <p class="text-sm text-gray-400 mt-2">📞 766 766 22 90</p>
+                    <p class="text-sm text-gray-400">info@mathletesacademy.com</p>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Connect with Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-math-red transition" title="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-math-red transition" title="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-math-red transition" title="Threads"><i data-lucide="at-sign" class="w-6 h-6"></i></a>
+                        <a href="#" target="_blank" class="text-gray-400 hover:text-math-red transition" title="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-sm text-gray-500">
+                &copy; <span id="current-year"></span> Mathletes Academy. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="module">
+        // --- Firebase Imports and Setup (Mandatory for Persistence) ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, addDoc, setDoc, onSnapshot, collection, query, where, serverTimestamp, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        setLogLevel('Debug'); // Enable debug logs for Firestore
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app, db, auth, currentUserId = null;
+        let isAuthReady = false;
+
+        // Mock Result Data (to be created if a user logs in for the first time)
+        const mockResults = [
+            { date: '2024-10-01', topic: 'Quadratic Equations Test', maxMarks: 50, obtainedMarks: 45 },
+            { date: '2024-10-15', topic: 'Trigonometry Half-Syllabus', maxMarks: 100, obtainedMarks: 88 },
+            { date: '2024-11-05', topic: 'Full Syllabus Mock 1', maxMarks: 80, obtainedMarks: 75 },
+        ];
+
+
+        // 1. Initialization and Authentication
+        async function initializeFirebase() {
+            try {
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase configuration is missing.");
+                    return;
+                }
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        currentUserId = user.uid;
+                        console.log("Authenticated with UID:", currentUserId);
+                    } else {
+                        console.log("User signed out or not authenticated. Signing in anonymously...");
+                        await signInAnonymously(auth);
+                    }
+                    isAuthReady = true;
+                    // Start listening for data if needed, but for this app, we listen on demand.
+                    updateCopyrightYear();
+                });
+
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+            } catch (error) {
+                console.error("Error initializing Firebase or signing in:", error);
+            }
+        }
+
+        // --- Admissions Form Handling (Public Data) ---
+        async function handleAdmissionSubmit(event) {
+            event.preventDefault();
+            if (!isAuthReady || !db) {
+                document.getElementById('form-status').textContent = "Database connection not ready. Please try again.";
+                document.getElementById('form-status').className = 'mt-4 text-center font-medium text-red-500';
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const classGrade = document.getElementById('class-grade').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const submitBtn = document.getElementById('admission-submit-btn');
+            const statusMessage = document.getElementById('form-status');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            statusMessage.textContent = '';
+            statusMessage.className = '';
+
+            try {
+                statusMessage.textContent = "Thank you! Your inquiry has been submitted. We will contact you shortly.";
+                statusMessage.className = 'mt-4 text-center font-medium text-green-600';
+                document.getElementById('admission-form').reset();
+
+            } catch (error) {
+                console.error("Error saving admission inquiry:", error);
+                statusMessage.textContent = "An error occurred during submission. Please check the console for details.";
+                statusMessage.className = 'mt-4 text-center font-medium text-red-500';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Inquiry';
+            }
+        }
+
+        window.handleAdmissionSubmit = handleAdmissionSubmit; // Make function globally accessible
+
+
+        // --- Student Portal Logic (Private Data) ---
+
+        function showStudentPortal() {
+            document.getElementById('student-portal-modal').classList.remove('hidden');
+            document.getElementById('student-portal-modal').classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            // Reset view to login
+            document.getElementById('portal-login-view').classList.remove('hidden');
+            document.getElementById('portal-results-view').classList.add('hidden');
+            document.getElementById('portal-message').textContent = '';
+        }
+
+        function hideStudentPortal() {
+            document.getElementById('student-portal-modal').classList.add('hidden');
+            document.getElementById('student-portal-modal').classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        window.showStudentPortal = showStudentPortal;
+        window.hideStudentPortal = hideStudentPortal;
+
+
+        async function getStudentProfile(email) {
+            const studentProfilesRef = collection(db, `artifacts/${appId}/users/${currentUserId}/student_profiles`);
+            const q = query(studentProfilesRef, where("email", "==", email));
+            const querySnapshot = await getDocs(q);
+            return querySnapshot.docs[0] || null;
+        }
+
+        async function getStudentResults(studentId) {
+            const studentResultsRef = collection(db, `artifacts/${appId}/users/${currentUserId}/student_results`);
+            const q = query(studentResultsRef, where("studentId", "==", studentId));
+            const querySnapshot = await getDocs(q);
+
+            // Sort results by date (descending)
+            const results = querySnapshot.docs.map(doc => doc.data());
+            return results.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        async function createNewStudent(email, name, userId) {
+            const studentProfilesRef = collection(db, `artifacts/${appId}/users/${currentUserId}/student_profiles`);
+            // Add profile
+            const profileDocRef = await addDoc(studentProfilesRef, {
+                email: email.toLowerCase(),
+                name: name || "Mathletes Student",
+                userId: userId,
+                createdAt: serverTimestamp()
+            });
+
+            // Add mock results for the new student
+            const studentResultsRef = collection(db, `artifacts/${appId}/users/${currentUserId}/student_results`);
+            for (const result of mockResults) {
+                await addDoc(studentResultsRef, {
+                    ...result,
+                    studentId: profileDocRef.id,
+                    createdAt: serverTimestamp()
+                });
+            }
+            return { id: profileDocRef.id, data: { name: name || "Mathletes Student" } };
+        }
+
+        async function handleStudentLogin() {
+            if (!isAuthReady || !db) {
+                document.getElementById('portal-message').textContent = "Authentication is not ready. Please wait a moment.";
+                return;
+            }
+
+            const emailInput = document.getElementById('student-email');
+            const nameInput = document.getElementById('student-name');
+            const portalMsg = document.getElementById('portal-message');
+
+            const email = emailInput.value.trim().toLowerCase();
+            const name = nameInput.value.trim();
+
+            if (!email) {
+                portalMsg.textContent = "Please enter your email address.";
+                return;
+            }
+
+            portalMsg.textContent = "Searching for profile...";
+
+            try {
+                let profileDoc = await getStudentProfile(email);
+                let studentId;
+                let studentName;
+
+                if (!profileDoc) {
+                    // Sign Up Scenario
+                    if (!name) {
+                        portalMsg.textContent = "Profile not found. Please provide your name to register.";
+                        return;
+                    }
+                    portalMsg.textContent = "Creating new profile and mock results...";
+                    const newProfile = await createNewStudent(email, name, currentUserId);
+                    studentId = newProfile.id;
+                    studentName = newProfile.data.name;
+                } else {
+                    // Sign In Scenario
+                    studentId = profileDoc.id;
+                    studentName = profileDoc.data().name;
+                }
+
+                const results = await getStudentResults(studentId);
+                displayResults(studentName, results);
+                portalMsg.textContent = "";
+
+            } catch (error) {
+                console.error("Error during student login/lookup:", error);
+                portalMsg.textContent = "An error occurred. Check the console for details.";
+            }
+        }
+
+        function displayResults(studentName, results) {
+            document.getElementById('student-name-display').textContent = studentName;
+
+            const resultsList = document.getElementById('results-list');
+            resultsList.innerHTML = ''; // Clear previous results
+
+            if (results.length === 0) {
+                resultsList.innerHTML = '<p class="text-center text-gray-500 italic">No results found for this student.</p>';
+                return;
+            }
+
+            results.forEach(result => {
+                const percentage = ((result.obtainedMarks / result.maxMarks) * 100).toFixed(1);
+                const resultItem = `
+                    <div class="p-4 bg-white rounded-lg shadow-md border-l-4 ${percentage >= 75 ? 'border-green-500' : 'border-yellow-500'}">
+                        <p class="font-bold text-lg">${result.topic}</p>
+                        <p class="text-sm text-gray-500 mb-2">Date: ${result.date}</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-base text-gray-700">Marks: ${result.obtainedMarks} / ${result.maxMarks}</p>
+                            <span class="text-lg font-extrabold ${percentage >= 75 ? 'text-green-600' : 'text-yellow-600'}">${percentage}%</span>
+                        </div>
+                    </div>
+                `;
+                resultsList.innerHTML += resultItem;
+            });
+
+            document.getElementById('portal-login-view').classList.add('hidden');
+            document.getElementById('portal-results-view').classList.remove('hidden');
+        }
+
+        function handleLogout() {
+            // Note: Since we use anonymous/custom token sign-in, this just clears the session, 
+            // but the user will immediately sign back in anonymously. We only switch the UI view.
+            document.getElementById('student-email').value = '';
+            document.getElementById('student-name').value = '';
+            document.getElementById('portal-login-view').classList.remove('hidden');
+            document.getElementById('portal-results-view').classList.add('hidden');
+            document.getElementById('portal-message').textContent = "Logged out. Enter email to sign in again.";
+            document.getElementById('portal-message').className = 'mt-4 text-center font-medium text-blue-500';
+            // We don't call signOut(auth) as we must maintain the Canvas session.
+        }
+
+
+        window.handleStudentLogin = handleStudentLogin;
+        window.handleLogout = handleLogout;
+
+
+        // --- Utility Functions and DOM Load ---
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function updateCopyrightYear() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+
+        // Carousel Logic
+        let courseCurrentIndex = 0;
+        let resultsCurrentIndex = 0;
+        let courseInterval;
+        let resultsInterval;
+
+        const courses = [
+            { title: 'Class 8', dataIndex: 0 },
+            { title: 'Class 10', dataIndex: 1 },
+            { title: 'Class 12', dataIndex: 2 }
+        ];
+
+        const results = [
+            { title: 'Ananya', dataIndex: 0 },
+            { title: 'Rohan', dataIndex: 1 }
+        ];
+
+
+        function showSlide(type, index) {
+            const carouselId = type === 'course' ? 'course-carousel' : 'results-carousel';
+            const dotsId = type === 'course' ? 'course-dots' : 'results-dots';
+            const currentIndexVar = type === 'course' ? 'courseCurrentIndex' : 'resultsCurrentIndex';
+            const items = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            const dots = document.querySelectorAll(`#${dotsId} .carousel-dot`);
+
+            if (items.length === 0) return;
+
+            // Ensure index wraps around
+            if (index >= items.length) index = 0;
+            if (index < 0) index = items.length - 1;
+
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === index) {
+                    dot.classList.add('active');
+                }
+            });
+
+            if (type === 'course') courseCurrentIndex = index;
+            if (type === 'results') resultsCurrentIndex = index;
+        }
+
+        function nextSlide(type) {
+            let index = type === 'course' ? courseCurrentIndex : resultsCurrentIndex;
+            const items = document.querySelectorAll(`#${type === 'course' ? 'course-carousel' : 'results-carousel'} .carousel-item`);
+            index = (index + 1) % items.length;
+            showSlide(type, index);
+        }
+
+        function changeSlide(type, index) {
+            showSlide(type, index);
+            // Reset interval on manual click
+            if (type === 'course') { clearInterval(courseInterval); courseInterval = setInterval(() => nextSlide('course'), 5000); }
+            if (type === 'results') { clearInterval(resultsInterval); resultsInterval = setInterval(() => nextSlide('results'), 7000); }
+        }
+
+        // Set initial slides and start auto-rotate
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons(); // Initialize Lucide Icons
+            initializeFirebase(); // Initialize Firebase
+
+            // Initialize carousels
+            showSlide('course', 0);
+            showSlide('results', 0);
+
+            // Start auto-rotate
+            courseInterval = setInterval(() => nextSlide('course'), 5000);
+            resultsInterval = setInterval(() => nextSlide('results'), 7000);
+        });
+
+    </script>
+
+</body>
+</html>
