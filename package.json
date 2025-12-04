@@ -1,0 +1,8 @@
+{
+  "name": "mathletes-academy-website",
+  "version": "1.0.0",
+  "description": "Mathletes Academy Website with Vercel Deployment",
+  "dependencies": {
+    "@octokit/rest": "^19.0.0"
+  }
+}
