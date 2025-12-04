@@ -8,9 +8,6 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- SQL.js for SQLite Database -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
-    
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -108,7 +105,7 @@
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <!-- Using the uploaded filename 'Mathletes.png'. If it fails, text fallback is provided by alt -->
-                <img src="https://github.com/Boopathy93/Mathletes/blob/main/Mathletes/Mathletes.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" alt="Mathletes Logo" class="h-12 w-auto object-contain">
+                <img src="Mathletes.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" alt="Mathletes Logo" class="h-12 w-auto object-contain">
                 <div style="display:none" class="text-2xl font-bold text-brand-red">MATHLETES</div>
                 <span class="hidden md:block text-xl font-bold text-gray-800 tracking-tight">Mathletes Academy</span>
             </div>
@@ -415,12 +412,12 @@
                         <textarea id="message" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-brand-red transition"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-brand-red text-white font-bold py-3 rounded-lg hover:bg-brand-darkred transition shadow-lg transform active:scale-95">
+                    <button type="submit" id="submitBtn" class="w-full bg-brand-red text-white font-bold py-3 rounded-lg hover:bg-brand-darkred transition shadow-lg transform active:scale-95">
                         Register Now
                     </button>
                     
                     <p class="text-xs text-gray-400 text-center mt-4">
-                        * Clicking Register will save your data to a local SQLite database and prompt a download of 'mathletes.db'.
+                       
                     </p>
                 </form>
             </div>
@@ -489,7 +486,7 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                &copy; 2024 Mathletes Academy. All rights reserved.
+                &copy; 2025 Mathletes Academy. All rights reserved.
             </div>
         </div>
     </footer>
@@ -499,99 +496,67 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo"> Chat with us on WhatsApp
     </a>
 
-    <!-- Application Logic: SQLite & Interactions -->
+    <!-- Application Logic: API Integration -->
     <script>
-        let db;
-        let SQL;
-
-        // Initialize SQLite Database
-        async function initDB() {
-            try {
-                // Load SQL.js WebAssembly
-                SQL = await initSqlJs({
-                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
-                });
-
-                // Create a new database
-                db = new SQL.Database();
-
-                // Create the table
-                const createTableQuery = `
-                    CREATE TABLE IF NOT EXISTS admissions (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        name TEXT NOT NULL,
-                        grade TEXT NOT NULL,
-                        phone TEXT NOT NULL,
-                        email TEXT NOT NULL,
-                        message TEXT,
-                        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-                    );
-                `;
-                db.run(createTableQuery);
-                console.log("SQLite Database initialized and 'admissions' table created.");
-            } catch (err) {
-                console.error("Failed to initialize database:", err);
-            }
-        }
-
         // Handle Form Submission
-        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+        document.getElementById('admissionForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            if (!db) {
-                alert("Database is still loading. Please try again in a moment.");
-                return;
-            }
-
+            // UI Feedback
+            const submitBtn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('statusMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Registering...";
+            
             // Get values
-            const name = document.getElementById('name').value;
-            const grade = document.getElementById('grade').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const formData = {
+                name: document.getElementById('name').value,
+                grade: document.getElementById('grade').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
 
             try {
-                // Insert into DB
-                const stmt = db.prepare("INSERT INTO admissions (name, grade, phone, email, message) VALUES (?, ?, ?, ?, ?)");
-                stmt.run([name, grade, phone, email, message]);
-                stmt.free();
+                // In a real Vercel deployment, this URL is relative: '/api/register'
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
 
-                // Feedback
-                const statusDiv = document.getElementById('statusMessage');
-                statusDiv.innerText = "Registration Successful! Downloading database record...";
-                statusDiv.className = "p-3 rounded text-sm text-center bg-green-100 text-green-700 block mb-4";
+                const result = await response.json();
 
-                // Trigger Download of the DB file
-                downloadDB();
-
-                // Reset form
-                e.target.reset();
+                if (response.ok) {
+                    statusDiv.innerText = "Registration Successful! Data sent to GitHub.";
+                    statusDiv.className = "p-3 rounded text-sm text-center bg-green-100 text-green-700 block mb-4";
+                    e.target.reset();
+                } else {
+                    throw new Error(result.message || "Server Error");
+                }
             } catch (err) {
-                console.error(err);
-                alert("Error saving data.");
+                console.error("Submission Error:", err);
+                
+                // Fallback Simulation for Preview Mode
+                if (err.message.includes("Unexpected token") || err.message.includes("404")) {
+                    statusDiv.innerHTML = `
+                        <strong>Preview Mode:</strong> API endpoint '/api/register' not found.<br>
+                        Deploy this site to Vercel with the provided <code>api/register.js</code> file to make it work.<br>
+                        <span class="text-xs">Payload was: ${JSON.stringify(formData)}</span>
+                    `;
+                    statusDiv.className = "p-3 rounded text-sm text-center bg-yellow-100 text-yellow-700 block mb-4";
+                } else {
+                    statusDiv.innerText = "Error: " + err.message;
+                    statusDiv.className = "p-3 rounded text-sm text-center bg-red-100 text-red-700 block mb-4";
+                }
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Register Now";
             }
         });
-
-        // Function to export and download the SQLite DB file
-        function downloadDB() {
-            const data = db.export();
-            const blob = new Blob([data], { type: 'application/x-sqlite3' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'mathletes.db';
-            document.body.appendChild(a);
-            a.click();
-            
-            // Clean up
-            setTimeout(() => {
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-            }, 100);
-        }
-
-        // Initialize on load
-        window.addEventListener('load', initDB);
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
